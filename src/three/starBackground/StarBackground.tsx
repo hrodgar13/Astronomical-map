@@ -4,12 +4,10 @@ import { Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import './StarBackground.scss';
 
-// Props interface for AnimatedStars
 interface AnimatedStarsProps {
     scrollProgress?: number;
 }
 
-// This component handles the animated stars
 const AnimatedStars: React.FC<AnimatedStarsProps> = ({ scrollProgress = 0 }) => {
     const starsRef = useRef<THREE.Points>(null);
 
@@ -18,17 +16,16 @@ const AnimatedStars: React.FC<AnimatedStarsProps> = ({ scrollProgress = 0 }) => 
             // Base rotation animation
             starsRef.current.rotation.y = clock.getElapsedTime() * 0.05;
 
-            // If we're scrolling, change the rotation to make stars "fly up"
+            // When scrolling down, stars appear to move upward
             if (scrollProgress > 0) {
-                // Progressively rotate the stars to look like we're flying "up"
-                starsRef.current.rotation.x = -scrollProgress * Math.PI * 0.5; // Rotate up to 90 degrees
+                // Make stars progressively move up with scroll
+                starsRef.current.rotation.x = -scrollProgress * Math.PI * 0.5;
 
-                // Move stars a bit closer to create a "flying through" effect
-                starsRef.current.position.z = scrollProgress * 10;
+                // Keep position of stars fixed, don't move them closer
+                // This ensures they remain visible at the top
             } else {
                 // Normal subtle animation when not scrolling
                 starsRef.current.rotation.x = Math.sin(clock.getElapsedTime() * 0.025) * 0.1;
-                starsRef.current.position.z = 0;
             }
         }
     });
