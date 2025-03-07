@@ -1,0 +1,23 @@
+// In your _typography.scss file
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&family=PT+Serif:wght@400;700&display=swap');
+
+// Define font variables
+$heading-font: 'Philosopher', sans-serif;
+$body-font: 'PT Serif', serif;
+
+// Apply fonts
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+  font-weight: 700;
+}
+
+body, p, li, a {
+  font-family: $body-font;
+  font-weight: 400;
+}
+
+// Special class for astronomical terms if needed
+.celestial-term {
+  font-family: $heading-font;
+  font-style: italic;
+}
