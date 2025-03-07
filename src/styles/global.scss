@@ -1,6 +1,6 @@
-@import 'typography';
-@import 'reset';
-@import 'variables';
+@use 'variables' as *;
+@use 'typography' as *;
+@use 'reset' as *;
 
 body {
   background: $bg-color-1;

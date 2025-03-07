@@ -1,0 +1,60 @@
+// src/components/hemisphereSelection/HemisphereSelection.scss
+@use "../../styles/global" as *;
+
+.hemisphere-selection {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  z-index: 5;
+
+  .selection-divider {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateX(-50%);
+    z-index: 6;
+  }
+
+  .hemisphere {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    position: relative;
+    overflow: hidden;
+
+    &:hover {
+      flex: 1.5;
+
+      .hemisphere-label {
+        transform: scale(1.2);
+        text-shadow: 0 0 25px rgba(255, 255, 255, 0.7);
+      }
+    }
+
+    &.north {
+      background: rgba(0, 40, 100, 0.2);
+    }
+
+    &.south {
+      background: rgba(0, 100, 85, 0.2);
+    }
+
+    .hemisphere-label {
+      font-size: 4rem;
+      color: white;
+      font-weight: 700;
+      transition: all 0.5s ease;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+    }
+  }
+}
